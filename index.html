@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dillon Young — Technology Made Simple</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:   #1a2b3c;
+      --slate:  #2e4a62;
+      --gold:   #c8983a;
+      --cream:  #f7f3ee;
+      --warm:   #ede8e0;
+      --white:  #ffffff;
+      --text:   #2a2a2a;
+      --muted:  #5a5a5a;
+      --radius: 4px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Source Serif 4', Georgia, serif;
+      background: var(--cream);
+      color: var(--text);
+      font-size: 18px;
+      line-height: 1.75;
+    }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--navy);
+      padding: 0 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: #cdd8e3;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-family: 'Source Serif 4', serif;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--slate) 60%, #3a6080 100%);
+      color: var(--white);
+      padding: 100px 5% 90px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: rgba(200,152,58,0.08);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -120px; left: 30%;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: rgba(200,152,58,0.05);
+      pointer-events: none;
+    }
+    .hero-text { position: relative; z-index: 1; }
+    .hero-eyebrow {
+      font-size: 0.85rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+      font-weight: 400;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 4vw, 3.4rem);
+      line-height: 1.2;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+    .hero-sub {
+      font-size: 1.1rem;
+      color: #b8cad8;
+      max-width: 480px;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+    }
+    .hero-cta {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--navy);
+      font-family: 'Source Serif 4', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 14px 32px;
+      text-decoration: none;
+      border-radius: var(--radius);
+      letter-spacing: 0.04em;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .hero-cta:hover { background: #dba840; transform: translateY(-1px); }
+    .hero-card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.13);
+      border-radius: 8px;
+      padding: 2.5rem;
+      backdrop-filter: blur(6px);
+      position: relative; z-index: 1;
+    }
+    .hero-card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+    .trust-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1.2rem;
+    }
+    .trust-icon {
+      font-size: 1.4rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .trust-text strong {
+      display: block;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 2px;
+    }
+    .trust-text span { font-size: 0.9rem; color: #9ab0c2; }
+
+    /* ── SECTION BASE ── */
+    section { padding: 90px 5%; }
+    .section-eyebrow {
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.8rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3vw, 2.8rem);
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.25;
+      margin-bottom: 1.2rem;
+    }
+    .section-lead {
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 600px;
+      margin-bottom: 3rem;
+      font-weight: 300;
+    }
+
+    /* ── INTRO STRIP ── */
+    .intro-strip {
+      background: var(--white);
+      padding: 60px 5%;
+      text-align: center;
+      border-bottom: 1px solid #e2dbd2;
+    }
+    .intro-strip p {
+      font-size: 1.25rem;
+      color: var(--muted);
+      max-width: 720px;
+      margin: 0 auto;
+      font-style: italic;
+      font-weight: 300;
+      line-height: 1.8;
+    }
+    .intro-strip p strong { color: var(--navy); font-style: normal; font-weight: 600; }
+
+    /* ── SERVICES ── */
+    #services { background: var(--cream); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .service-card {
+      background: var(--white);
+      border-radius: 8px;
+      padding: 2rem 2rem 2.2rem;
+      border-left: 4px solid var(--gold);
+      box-shadow: 0 2px 12px rgba(26,43,60,0.06);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .service-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 24px rgba(26,43,60,0.10);
+    }
+    .service-icon { font-size: 2rem; margin-bottom: 0.8rem; }
+    .service-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--navy);
+      margin-bottom: 0.6rem;
+    }
+    .service-card p { font-size: 0.95rem; color: var(--muted); line-height: 1.7; }
+
+    /* ── WHO WE SERVE ── */
+    #who { background: var(--navy); color: var(--white); }
+    #who .section-title { color: var(--white); }
+    #who .section-lead { color: #9ab0c2; }
+    .who-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    .who-list { list-style: none; }
+    .who-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      font-size: 1rem;
+      color: #cdd8e3;
+    }
+    .who-list li:last-child { border-bottom: none; }
+    .who-list li .check {
+      color: var(--gold);
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+    .who-list li strong { color: var(--white); display: block; margin-bottom: 2px; }
+    .who-quote {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 2.5rem;
+    }
+    .who-quote blockquote {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-style: italic;
+      color: var(--white);
+      line-height: 1.65;
+      margin-bottom: 1.5rem;
+    }
+    .who-quote cite {
+      font-size: 0.9rem;
+      color: var(--gold);
+      font-style: normal;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── ABOUT ── */
+    #about { background: var(--warm); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .about-photo {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 8px 32px rgba(26,43,60,0.18);
+      display: block;
+    }
+    .about-text h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 2.5vw, 2.4rem);
+      color: var(--navy);
+      margin-bottom: 1.2rem;
+    }
+    .about-text p {
+      color: var(--muted);
+      margin-bottom: 1.2rem;
+      font-size: 1rem;
+      line-height: 1.85;
+    }
+    .about-text p strong { color: var(--navy); }
+    .about-values {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 1.8rem;
+    }
+    .value-tag {
+      background: var(--navy);
+      color: var(--cream);
+      font-size: 0.82rem;
+      padding: 6px 14px;
+      border-radius: 40px;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── HOW IT WORKS ── */
+    #how { background: var(--white); }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+      counter-reset: steps;
+    }
+    .step {
+      counter-increment: steps;
+      position: relative;
+      padding-top: 1rem;
+    }
+    .step::before {
+      content: counter(steps);
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--gold);
+      opacity: 0.4;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+    .step h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+    }
+    .step p { font-size: 0.95rem; color: var(--muted); }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--navy); color: var(--white); text-align: center; }
+    #contact .section-title { color: var(--white); }
+    #contact .section-lead { color: #9ab0c2; margin: 0 auto 2.5rem; }
+    .contact-options {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+    .contact-option {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 8px;
+      padding: 1.8rem 2.5rem;
+      min-width: 220px;
+    }
+    .contact-option .icon { font-size: 2rem; margin-bottom: 0.6rem; }
+    .contact-option h4 {
+      font-family: 'Playfair Display', serif;
+      color: var(--gold);
+      font-size: 1rem;
+      margin-bottom: 0.3rem;
+    }
+    .contact-option p { font-size: 0.95rem; color: #9ab0c2; }
+    .contact-form {
+      max-width: 560px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    .form-row { margin-bottom: 1.2rem; }
+    .form-row label {
+      display: block;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #7a9ab0;
+      margin-bottom: 0.4rem;
+    }
+    .form-row input,
+    .form-row textarea,
+    .form-row select {
+      width: 100%;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: var(--radius);
+      padding: 12px 16px;
+      color: var(--white);
+      font-family: 'Source Serif 4', serif;
+      font-size: 1rem;
+      transition: border-color 0.2s;
+    }
+    .form-row input::placeholder,
+    .form-row textarea::placeholder { color: #5a7a90; }
+    .form-row input:focus,
+    .form-row textarea:focus,
+    .form-row select:focus {
+      outline: none;
+      border-color: var(--gold);
+    }
+    .form-row select option { background: var(--navy); color: var(--white); }
+    .form-row textarea { height: 120px; resize: vertical; }
+    .form-submit {
+      width: 100%;
+      background: var(--gold);
+      color: var(--navy);
+      font-family: 'Source Serif 4', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 14px;
+      border: none;
+      border-radius: var(--radius);
+      cursor: pointer;
+      letter-spacing: 0.06em;
+      transition: background 0.2s;
+      margin-top: 0.5rem;
+    }
+    .form-submit:hover { background: #dba840; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #111d28;
+      color: #5a7a90;
+      text-align: center;
+      padding: 2rem 5%;
+      font-size: 0.85rem;
+    }
+    footer a { color: var(--gold); text-decoration: none; }
+
+    /* ── DIVIDER ── */
+    .gold-rule {
+      width: 60px;
+      height: 3px;
+      background: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-text { animation: fadeUp 0.7s ease both; }
+    .hero-card { animation: fadeUp 0.7s 0.15s ease both; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 820px) {
+      .hero { grid-template-columns: 1fr; gap: 2.5rem; padding: 70px 5% 60px; }
+      .hero-card { display: none; }
+      .who-grid { grid-template-columns: 1fr; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-photo { aspect-ratio: 1 / 1; max-width: 400px; margin: 0 auto; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">Dillon <span>Young</span></a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#who">Who I Help</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <p class="hero-eyebrow">Technology Consulting · Nashville, TN</p>
+    <h1>Technology Made<br /><em>Simple.</em> Finally.</h1>
+    <p class="hero-sub">Clear setup, patient guidance, and real support for your TV, audio, home network, and more — especially for those who just want things to work.</p>
+    <a class="hero-cta" href="#contact">Schedule a Free Call</a>
+  </div>
+  <div class="hero-card">
+    <p class="hero-card-title">Why clients choose Dillon</p>
+    <div class="trust-item">
+      <div class="trust-icon">🤝</div>
+      <div class="trust-text">
+        <strong>Patient, Plain-English Communication</strong>
+        <span>No jargon. No rushing. Just clear answers and real help.</span>
+      </div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">🏠</div>
+      <div class="trust-text">
+        <strong>In-Home & Remote Service</strong>
+        <span>I come to you — or connect via Zoom, FaceTime, or Google Meet.</span>
+      </div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">📞</div>
+      <div class="trust-text">
+        <strong>Follow-Up Support Included</strong>
+        <span>Questions after I leave? I'm a phone call away.</span>
+      </div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">🎯</div>
+      <div class="trust-text">
+        <strong>Tailored to Your Needs</strong>
+        <span>Every setup is different. I meet you exactly where you are.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTRO STRIP -->
+<div class="intro-strip">
+  <p>You shouldn't have to feel frustrated by your own TV. <strong>Dillon Young</strong> brings calm, professional tech help to your home — so you can enjoy the things technology is supposed to make easier.</p>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="gold-rule"></div>
+  <p class="section-eyebrow">What I Do</p>
+  <h2 class="section-title">Services</h2>
+  <p class="section-lead">Whether you need a simple TV fix or a whole-home audio and networking setup, I handle it all with care and clarity.</p>
+
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">📺</div>
+      <h3>Television Setup & Support</h3>
+      <p>New TV setup, streaming service configuration, remote simplification, picture and sound optimization, and cable management. I'll make sure you can actually use it.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🔊</div>
+      <h3>Audio & Soundbar Installation</h3>
+      <p>Soundbar and speaker setup, Bluetooth and wireless audio configuration, hearing-aid compatible audio solutions, and whole-room or whole-home sound systems.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📡</div>
+      <h3>Home Networking & Wi-Fi</h3>
+      <p>Router setup and optimization, Wi-Fi dead zone elimination, smart device connectivity, and ensuring every room has a reliable signal for streaming and video calls.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📹</div>
+      <h3>Video Calling & Connectivity</h3>
+      <p>FaceTime, Zoom, and video calling setup — especially for staying connected with family. I'll make it simple enough to use every day without help.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🏡</div>
+      <h3>Smart Home Simplification</h3>
+      <p>Smart TV, voice assistants, smart lighting, and home automation — set up and simplified so they actually make life easier rather than more complicated.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🛡️</div>
+      <h3>Ongoing Tech Support</h3>
+      <p>Monthly or as-needed support plans for clients who want a trusted person to call when something stops working. No surprise fees, no runaround.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHO I HELP -->
+<section id="who">
+  <div class="gold-rule"></div>
+  <p class="section-eyebrow">Who I Help</p>
+  <h2 class="section-title">You deserve technology<br />that works for <em>you.</em></h2>
+  <p class="section-lead">I specialize in serving those who deserve patient, trustworthy tech help — and the families who love them.</p>
+
+  <div class="who-grid">
+    <ul class="who-list">
+      <li>
+        <span class="check">✦</span>
+        <div>
+          <strong>Older Adults & Retirees</strong>
+          You shouldn't need a grandchild nearby to watch your favorite show or video chat with family. I make technology genuinely accessible.
+        </div>
+      </li>
+      <li>
+        <span class="check">✦</span>
+        <div>
+          <strong>Adult Children of Aging Parents</strong>
+          You want your parents to be comfortable and connected — but you can't always be there. I'm the trusted, local resource for your family.
+        </div>
+      </li>
+      <li>
+        <span class="check">✦</span>
+        <div>
+          <strong>New Homeowners</strong>
+          Moving into a new home and need everything set up right — TV, network, audio, the works. I'll get it done cleanly and correctly.
+        </div>
+      </li>
+      <li>
+        <span class="check">✦</span>
+        <div>
+          <strong>Anyone Who Wants It Done Right</strong>
+          If you're tired of confusing setups, dropped connections, or technology that never quite works — I'm your person.
+        </div>
+      </li>
+    </ul>
+
+    <div class="who-quote">
+      <blockquote>"I just want to watch my shows and video call my grandkids without asking for help every time. Is that too much to ask?"</blockquote>
+      <cite>— The client I most want to help</cite>
+      <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1);">
+        <p style="color: #9ab0c2; font-size: 0.95rem; line-height: 1.8;">It's not too much to ask. It's exactly what technology is supposed to do. And it's exactly what I help make happen — with patience, care, and zero judgment.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="gold-rule"></div>
+  <p class="section-eyebrow">About</p>
+  <div class="about-grid">
+    <img class="about-photo" src="dillon-and-chuck.jpg" alt="Dillon Young with his dog Chuck" />
+    <div class="about-text">
+      <h2>Hi, I'm Dillon Young.</h2>
+      <p>Technology and I go way back — I've been tinkering with computers, audio gear, and home systems since grade school. What started as a personal passion eventually became something I couldn't stop sharing with the people around me. There's a real satisfaction in watching someone go from frustrated to comfortable with the technology in their own home.</p>
+      <p>Over the years I've worked hands-on with a wide range of prosumer and consumer equipment — from brands like <strong>Epson, LG, Onkyo, JBL, Pioneer, ART, and DIRAC</strong> to platforms like Windows, Mac, Xbox, and PlayStation. I built my own home media server from the ground up, and that experience deepened my understanding of how everything connects — and how to make it all work seamlessly together.</p>
+      <p>I started Dillon Young Consulting because I kept seeing the same thing: people who just wanted to enjoy their TV, hear their music clearly, or video call their grandkids — but felt let down by technology that was never set up with them in mind. <strong>I show up on time, explain everything in plain English, and don't leave until you feel genuinely comfortable and confident.</strong></p>
+      <p>Based in Nashville, TN and available for in-home visits throughout the region. Remote support via Zoom, Google Meet, or FaceTime also available.</p>
+      <div class="about-values">
+        <span class="value-tag">Patient</span>
+        <span class="value-tag">Trustworthy</span>
+        <span class="value-tag">Clear Communication</span>
+        <span class="value-tag">In-Home & Remote</span>
+        <span class="value-tag">No Jargon</span>
+        <span class="value-tag">Follow-Up Support</span>
+        <span class="value-tag">Prosumer Experience</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="gold-rule"></div>
+  <p class="section-eyebrow">The Process</p>
+  <h2 class="section-title">How It Works</h2>
+  <p class="section-lead">Getting help is simple. Here's what to expect from our first conversation to a finished setup.</p>
+
+  <div class="steps">
+    <div class="step">
+      <h3>Reach Out</h3>
+      <p>Call, email, or fill out the form below. Tell me what you're dealing with — no tech knowledge required to describe it.</p>
+    </div>
+    <div class="step">
+      <h3>Free Consultation</h3>
+      <p>We'll have a quick phone call to talk through your needs, your space, and what you're hoping to get working. No pressure, no commitment.</p>
+    </div>
+    <div class="step">
+      <h3>In-Home Visit</h3>
+      <p>I come to your home at a time that works for you. I bring everything needed and get to work — neatly, carefully, and at a pace you're comfortable with.</p>
+    </div>
+    <div class="step">
+      <h3>Walk-Through & Support</h3>
+      <p>Before I leave, I walk you through everything I've done and make sure you feel confident using it. And I'm available for follow-up questions afterward.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="gold-rule" style="margin: 0 auto 1.5rem;"></div>
+  <p class="section-eyebrow">Get In Touch</p>
+  <h2 class="section-title">Let's talk about<br />what you need.</h2>
+  <p class="section-lead">No complicated forms. No runaround. Call or text evenings and weekends, or leave a message, text, or email any time — I'll get back to you promptly.</p>
+
+  <div class="contact-options">
+    <div class="contact-option">
+      <div class="icon">📞</div>
+      <h4>Call or Text</h4>
+      <p>(615) 440-8585<br /><span style="font-size:0.85rem;">Calls welcome evenings & weekends.<br />Texts & messages anytime.</span></p>
+    </div>
+    <div class="contact-option">
+      <div class="icon">✉️</div>
+      <h4>Email</h4>
+      <p>dillon@dillonyoung.com</p>
+    </div>
+    <div class="contact-option">
+      <div class="icon">📍</div>
+      <h4>Service Area</h4>
+      <p>Nashville, TN & region<br /><span style="font-size:0.85rem;">Remote support available<br />via Zoom, FaceTime & Google Meet</span></p>
+    </div>
+  </div>
+
+  <!-- Netlify Form -->
+  <div class="contact-form">
+    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="contact-form">
+      <input type="hidden" name="form-name" value="contact" />
+      <p style="display:none"><label>Don't fill this out: <input name="bot-field" /></label></p>
+
+      <div class="form-row">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" placeholder="First and last name" required />
+      </div>
+      <div class="form-row">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" placeholder="Best number to reach you" />
+      </div>
+      <div class="form-row">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="your@email.com" required />
+      </div>
+      <div class="form-row">
+        <label for="service">What Can I Help With?</label>
+        <select id="service" name="service">
+          <option value="">Select a service...</option>
+          <option>Television Setup or Support</option>
+          <option>Audio / Soundbar Installation</option>
+          <option>Home Networking & Wi-Fi</option>
+          <option>Video Calling Setup</option>
+          <option>Smart Home Help</option>
+          <option>Ongoing Support Plan</option>
+          <option>Not Sure — Just Need Help</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <label for="message">Tell Me More (Optional)</label>
+        <textarea id="message" name="message" placeholder="Describe what's going on — in your own words is perfectly fine."></textarea>
+      </div>
+      <button type="submit" class="form-submit">Send My Message →</button>
+    </form>
+
+    <!-- Success message (shown after submission) -->
+    <div id="form-success" style="display:none; text-align:center; padding: 2.5rem 0;">
+      <div style="font-size: 2.5rem; margin-bottom: 1rem;">✅</div>
+      <h3 style="font-family:'Playfair Display',serif; color:var(--gold); font-size:1.4rem; margin-bottom:0.8rem;">Message Received!</h3>
+      <p style="color:#9ab0c2; font-size:1rem;">Thanks for reaching out. Dillon will be in touch within one business day.</p>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('contact-form');
+    const success = document.getElementById('form-success');
+    if (form) {
+      form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const data = new FormData(form);
+        await fetch('/', { method: 'POST', body: data });
+        form.style.display = 'none';
+        success.style.display = 'block';
+      });
+    }
+  </script>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Dillon Young Consulting · Nashville, TN · <a href="mailto:dillon@dillonyoung.com">dillon@dillonyoung.com</a></p>
+</footer>
+
+</body>
+</html>
