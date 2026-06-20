@@ -541,6 +541,87 @@
   <p>You shouldn't have to feel frustrated by your own TV. <strong>Dillon Young</strong> brings calm, professional tech help to your home — so you can enjoy the things technology is supposed to make easier.</p>
 </div>
 
+<!-- CONTACT -->
+<section id="contact">
+  <div class="gold-rule" style="margin: 0 auto 1.5rem;"></div>
+  <p class="section-eyebrow">Get In Touch</p>
+  <h2 class="section-title">Let's talk about<br />what you need.</h2>
+  <p class="section-lead">No complicated forms. No runaround. Send an email or fill out the form below and I'll get back to you promptly.</p>
+
+  <div class="contact-options">
+    <div class="contact-option">
+      <div class="icon">✉️</div>
+      <h4>Email</h4>
+      <p>dillon@dillonyoung.com</p>
+    </div>
+    <div class="contact-option">
+      <div class="icon">📍</div>
+      <h4>Service Area</h4>
+      <p>Nashville, TN & region<br /><span style="font-size:0.85rem;">Remote support available<br />via Zoom, FaceTime & Google Meet</span></p>
+    </div>
+  </div>
+
+  <!-- Netlify Form -->
+  <div class="contact-form">
+    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="contact-form">
+      <input type="hidden" name="form-name" value="contact" />
+      <p style="display:none"><label>Don't fill this out: <input name="bot-field" /></label></p>
+
+      <div class="form-row">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" placeholder="First and last name" required />
+      </div>
+      <div class="form-row">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" placeholder="Best number to reach you" />
+      </div>
+      <div class="form-row">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="your@email.com" required />
+      </div>
+      <div class="form-row">
+        <label for="service">What Can I Help With?</label>
+        <select id="service" name="service">
+          <option value="">Select a service...</option>
+          <option>Television Setup or Support</option>
+          <option>Audio / Soundbar Installation</option>
+          <option>Home Networking & Wi-Fi</option>
+          <option>Video Calling Setup</option>
+          <option>Smart Home Help</option>
+          <option>Ongoing Support Plan</option>
+          <option>Not Sure — Just Need Help</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <label for="message">Tell Me More (Optional)</label>
+        <textarea id="message" name="message" placeholder="Describe what's going on — in your own words is perfectly fine."></textarea>
+      </div>
+      <button type="submit" class="form-submit">Send My Message →</button>
+    </form>
+
+    <!-- Success message (shown after submission) -->
+    <div id="form-success" style="display:none; text-align:center; padding: 2.5rem 0;">
+      <div style="font-size: 2.5rem; margin-bottom: 1rem;">✅</div>
+      <h3 style="font-family:'Playfair Display',serif; color:var(--gold); font-size:1.4rem; margin-bottom:0.8rem;">Message Received!</h3>
+      <p style="color:#9ab0c2; font-size:1rem;">Thanks for reaching out. Dillon will be in touch within one business day.</p>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('contact-form');
+    const success = document.getElementById('form-success');
+    if (form) {
+      form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const data = new FormData(form);
+        await fetch('/', { method: 'POST', body: data });
+        form.style.display = 'none';
+        success.style.display = 'block';
+      });
+    }
+  </script>
+</section>
+
 <!-- SERVICES -->
 <section id="services">
   <div class="gold-rule"></div>
@@ -681,87 +762,6 @@
       <p>Before I leave, I walk you through everything I've done and make sure you feel confident using it. And I'm available for follow-up questions afterward.</p>
     </div>
   </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <div class="gold-rule" style="margin: 0 auto 1.5rem;"></div>
-  <p class="section-eyebrow">Get In Touch</p>
-  <h2 class="section-title">Let's talk about<br />what you need.</h2>
-  <p class="section-lead">No complicated forms. No runaround. Send an email or fill out the form below and I'll get back to you promptly.</p>
-
-  <div class="contact-options">
-    <div class="contact-option">
-      <div class="icon">✉️</div>
-      <h4>Email</h4>
-      <p>dillon@dillonyoung.com</p>
-    </div>
-    <div class="contact-option">
-      <div class="icon">📍</div>
-      <h4>Service Area</h4>
-      <p>Nashville, TN & region<br /><span style="font-size:0.85rem;">Remote support available<br />via Zoom, FaceTime & Google Meet</span></p>
-    </div>
-  </div>
-
-  <!-- Netlify Form -->
-  <div class="contact-form">
-    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="contact-form">
-      <input type="hidden" name="form-name" value="contact" />
-      <p style="display:none"><label>Don't fill this out: <input name="bot-field" /></label></p>
-
-      <div class="form-row">
-        <label for="name">Your Name</label>
-        <input type="text" id="name" name="name" placeholder="First and last name" required />
-      </div>
-      <div class="form-row">
-        <label for="phone">Phone Number</label>
-        <input type="tel" id="phone" name="phone" placeholder="Best number to reach you" />
-      </div>
-      <div class="form-row">
-        <label for="email">Email Address</label>
-        <input type="email" id="email" name="email" placeholder="your@email.com" required />
-      </div>
-      <div class="form-row">
-        <label for="service">What Can I Help With?</label>
-        <select id="service" name="service">
-          <option value="">Select a service...</option>
-          <option>Television Setup or Support</option>
-          <option>Audio / Soundbar Installation</option>
-          <option>Home Networking & Wi-Fi</option>
-          <option>Video Calling Setup</option>
-          <option>Smart Home Help</option>
-          <option>Ongoing Support Plan</option>
-          <option>Not Sure — Just Need Help</option>
-        </select>
-      </div>
-      <div class="form-row">
-        <label for="message">Tell Me More (Optional)</label>
-        <textarea id="message" name="message" placeholder="Describe what's going on — in your own words is perfectly fine."></textarea>
-      </div>
-      <button type="submit" class="form-submit">Send My Message →</button>
-    </form>
-
-    <!-- Success message (shown after submission) -->
-    <div id="form-success" style="display:none; text-align:center; padding: 2.5rem 0;">
-      <div style="font-size: 2.5rem; margin-bottom: 1rem;">✅</div>
-      <h3 style="font-family:'Playfair Display',serif; color:var(--gold); font-size:1.4rem; margin-bottom:0.8rem;">Message Received!</h3>
-      <p style="color:#9ab0c2; font-size:1rem;">Thanks for reaching out. Dillon will be in touch within one business day.</p>
-    </div>
-  </div>
-
-  <script>
-    const form = document.getElementById('contact-form');
-    const success = document.getElementById('form-success');
-    if (form) {
-      form.addEventListener('submit', async function(e) {
-        e.preventDefault();
-        const data = new FormData(form);
-        await fetch('/', { method: 'POST', body: data });
-        form.style.display = 'none';
-        success.style.display = 'block';
-      });
-    }
-  </script>
 </section>
 
 <!-- FOOTER -->
